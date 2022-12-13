@@ -5,7 +5,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        String input = reader.readLine();
+        String input = reader.readLine(); //while true?
         System.out.println(calc(input));
 
     }
