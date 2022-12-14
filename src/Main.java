@@ -3,11 +3,11 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 public class Main {
     public static void main(String[] args) throws IOException {
-
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        String input = reader.readLine(); //while true?
-        System.out.println(calc(input));
-
+            BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+            while (true) {
+                String input = reader.readLine();
+                System.out.println(calc(input));
+            }
     }
     public static String calc(String input) {
 
@@ -24,14 +24,16 @@ public class Main {
             try {
                 throw new Exception();
             } catch (Exception e) {
-                return "throws Exception //т.к. строка не является математической операцией";
+                System.out.println("throws Exception //т.к. строка не является математической операцией");
+                System.exit(0);
             }
         }
         if (index > 1) {
             try {
                 throw new Exception();
             } catch (Exception e) {
-                return "throws Exception //т.к. формат математической операции не удовлетворяет заданию - два операнда и один оператор (+, -, /, *)";
+                System.out.println("throws Exception //т.к. формат математической операции не удовлетворяет заданию - два операнда и один оператор (+, -, /, *)");
+                System.exit(0);
             }
         }
 
@@ -56,7 +58,11 @@ public class Main {
                         result = a * b;
                         output = Integer.toString(result);
                     }
-                } else return "throws Exception //т.к. числа не удовлетворяют условию задания: 'от 1 до 10 включительно' ";
+                } else {
+                    System.out.println("throws Exception //т.к. числа не удовлетворяют условию задания: 'от 1 до 10 включительно' ");
+                    System.exit(0);
+                }
+
             } else if (roman(string[0]) && roman(string[2])) {
                 int c = 0;
                 int d = 0;
@@ -82,7 +88,8 @@ public class Main {
                     result = c * d;
                 }
                 if (result <= 0) {
-                    return "throws Exception //т.к. в римской системе нет отрицательных чисел";
+                    System.out.println("throws Exception //т.к. в римской системе нет отрицательных чисел");
+                    System.exit(0);
                 }
                 String[] noBrain = new String[] {"I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII", "XIII", "XIV", "XV", "XVI", "XVII",
                         "XVIII", "XIX", "XX", "XXI", "XXII", "XXIII", "XXIV", "XXV", "XXVI", "XXVII", "XXVIII", "XXIX", "XXX", "XXXI", "XXXII", "XXXIII", "XXXIV",
@@ -94,7 +101,8 @@ public class Main {
 
             }
             else {
-                return "throws Exception //т.к. используются одновременно разные системы счисления, либо не удовлетворяет условию задания: 'от I до X включительно'";
+                System.out.println("throws Exception //т.к. используются одновременно разные системы счисления, либо не удовлетворяет условию задания: 'от I до X включительно'");
+                System.exit(0);
             }
         }
         return output;
@@ -119,4 +127,3 @@ public class Main {
         return count != 0;
     }
 }
-
